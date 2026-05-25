@@ -52,30 +52,24 @@
 </div>
 
 <script>
-    // 1. Function to calculate and output the circumference
     function calcCircumfrence(radius) {
-        // Circumference formula: 2 * 𝜋 * r
         const circumference = 2 * Math.PI * radius;
-        // Formatting to 2 decimal places for neatness
         const formattedResult = circumference.toFixed(2); 
         
         const message = `The circumference is ${formattedResult}`;
-        console.log(message); // Logs to browser developer tools
+        console.log(message); 
         return message;
     }
 
-    // 2. Function to calculate and output the area
     function calcArea(radius) {
-        // Area formula: 𝜋 * r^2
         const area = Math.PI * Math.pow(radius, 2);
         const formattedResult = area.toFixed(2);
         
         const message = `The area is ${formattedResult}`;
-        console.log(message); // Logs to browser developer tools
+        console.log(message);
         return message;
     }
 
-    // Helper function to handle the UI interaction
     function handleCalculation() {
         const radiusVal = parseFloat(document.getElementById('radiusInput').value);
         
@@ -83,8 +77,6 @@
             alert("Please enter a valid positive number for the radius.");
             return;
         }
-
-        // Execute the required functions and update the web page DOM
         document.getElementById('circumferenceOutput').innerText = calcCircumfrence(radiusVal);
         document.getElementById('areaOutput').innerText = calcArea(radiusVal);
     }
