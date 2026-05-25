@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Properties Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        .container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Circle Calculator</h2>
+    <label for="radiusInput">Enter Radius:</label><br>
+    <input type="number" id="radiusInput" placeholder="e.g., 5" step="any"><br>
+    <button onclick="handleCalculation()">Calculate</button>
+
+    <div class="output" id="circumferenceOutput"></div>
+    <div class="output" id="areaOutput"></div>
+</div>
+
+<script>
+    // 1. Function to calculate and output the circumference
+    function calcCircumfrence(radius) {
+        // Circumference formula: 2 * 𝜋 * r
+        const circumference = 2 * Math.PI * radius;
+        // Formatting to 2 decimal places for neatness
+        const formattedResult = circumference.toFixed(2); 
+        
+        const message = `The circumference is ${formattedResult}`;
+        console.log(message); // Logs to browser developer tools
+        return message;
+    }
+
+    // 2. Function to calculate and output the area
+    function calcArea(radius) {
+        // Area formula: 𝜋 * r^2
+        const area = Math.PI * Math.pow(radius, 2);
+        const formattedResult = area.toFixed(2);
+        
+        const message = `The area is ${formattedResult}`;
+        console.log(message); // Logs to browser developer tools
+        return message;
+    }
+
+    // Helper function to handle the UI interaction
+    function handleCalculation() {
+        const radiusVal = parseFloat(document.getElementById('radiusInput').value);
+        
+        if (isNaN(radiusVal) || radiusVal <= 0) {
+            alert("Please enter a valid positive number for the radius.");
+            return;
+        }
+
+        // Execute the required functions and update the web page DOM
+        document.getElementById('circumferenceOutput').innerText = calcCircumfrence(radiusVal);
+        document.getElementById('areaOutput').innerText = calcArea(radiusVal);
+    }
+</script>
+
+</body>
+</html>
